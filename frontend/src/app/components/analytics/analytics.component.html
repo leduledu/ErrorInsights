@@ -1,0 +1,91 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1>Widgets</h1>
+    <p>Analytics and data visualization widgets</p>
+  </div>
+  <div class="grid-auto-fit-lg">
+    <mat-card class="content-card">
+      <mat-card-header>
+        <mat-card-title>Errors by Browser</mat-card-title>
+        <mat-card-subtitle>Distribution of errors across different browsers</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chart-container">
+          @if (!errorStats()?.errorsByBrowser) {
+            <div class="no-data-message">
+              Loading chart data...
+            </div>
+          }
+          <canvas #browserChart
+                  id="browserChart"
+                  [width]="500"
+                  [height]="500">
+          </canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="content-card">
+      <mat-card-header>
+        <mat-card-title>Errors by URL</mat-card-title>
+        <mat-card-subtitle>Distribution of errors across different URLs</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chart-container">
+          @if (!errorStats()?.errorsByUrl) {
+            <div class="no-data-message">
+              Loading chart data...
+            </div>
+          }
+          <canvas #urlChart
+                  id="urlChart"
+                  [width]="500"
+                  [height]="500">
+          </canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="content-card">
+      <mat-card-header>
+        <mat-card-title>Top Error Messages</mat-card-title>
+        <mat-card-subtitle>Most frequent error messages</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chart-container">
+          @if (!errorStats()?.topErrorMessages) {
+            <div class="no-data-message">
+              Loading chart data...
+            </div>
+          }
+          <canvas #errorMessagesChart
+                  id="errorMessagesChart"
+                  [width]="500"
+                  [height]="500">
+          </canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="content-card">
+      <mat-card-header>
+        <mat-card-title>Errors Over Time</mat-card-title>
+        <mat-card-subtitle>Error trends over the selected period</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chart-container">
+          @if (!errorStats()?.errorsOverTime) {
+            <div class="no-data-message">
+              Loading chart data...
+            </div>
+          }
+          <canvas #errorTimeChart
+                  id="errorTimeChart"
+                  [width]="500"
+                  [height]="500">
+          </canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

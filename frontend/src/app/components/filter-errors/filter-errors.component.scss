@@ -1,0 +1,16 @@
+.filters-form {
+  width: 100%;
+}
+
+.error-table {
+  width: 100%;
+}
+
+.message-cell {
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+@import '../../styles/material-fixes.scss';
+
+@include material-component-fixes;

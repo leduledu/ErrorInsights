@@ -1,0 +1,69 @@
+<div class="stats-container">
+  <div class="grid-auto-fit-sm">
+    <mat-card class="content-card">
+      <mat-card-content>
+        <div class="stat-content">
+          <div class="stat-icon">
+            <mat-icon>bug_report</mat-icon>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value">{{ totalErrors() }}</div>
+            <div class="stat-label">Total Errors</div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="content-card">
+      <mat-card-content>
+        <div class="stat-content">
+          <div class="stat-icon">
+            <mat-icon>web</mat-icon>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value">{{ topBrowser() || 'N/A' }}</div>
+            <div class="stat-label">Top Browser</div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="content-card">
+      <mat-card-content>
+        <div class="stat-content">
+          <div class="stat-icon">
+            <mat-icon>link</mat-icon>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value">{{ topUrl() || 'N/A' }}</div>
+            <div class="stat-label">Top URL</div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="content-card">
+      <mat-card-content>
+        <div class="stat-content">
+          <div class="stat-icon">
+            <mat-icon>error</mat-icon>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value">{{ topErrorMessage() || 'N/A' }}</div>
+            <div class="stat-label">Top Error Message</div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="content-card">
+      <mat-card-content>
+        <div class="stat-content">
+          <div class="stat-icon">
+            <mat-icon>people</mat-icon>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value">{{ averageErrorPerUser() }}</div>
+            <div class="stat-label">Average Errors Per User</div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

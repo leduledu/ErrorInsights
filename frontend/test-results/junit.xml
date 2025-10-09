@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="11" failures="0" errors="0" time="2.374">
+  <testsuite name="RealTimeErrorsComponent" errors="0" failures="0" skipped="0" timestamp="2025-10-09T11:15:53" time="0.689" tests="1">
+    <testcase classname="RealTimeErrorsComponent" name="should create" time="0.059">
+    </testcase>
+  </testsuite>
+  <testsuite name="FilterErrorsComponent" errors="0" failures="0" skipped="0" timestamp="2025-10-09T11:15:53" time="1.552" tests="10">
+    <testcase classname="FilterErrorsComponent › Component Initialization" name="should create" time="0.187">
+    </testcase>
+    <testcase classname="FilterErrorsComponent › Component Initialization" name="should call loadErrors and loadDropdownData on init" time="0.077">
+    </testcase>
+    <testcase classname="FilterErrorsComponent › Form Handling" name="should apply filters when applyFilters is called" time="0.07">
+    </testcase>
+    <testcase classname="FilterErrorsComponent › Form Handling" name="should clear filters and reload data when clearFilters is called" time="0.061">
+    </testcase>
+    <testcase classname="FilterErrorsComponent › Error Loading" name="should load errors with correct filters" time="0.06">
+    </testcase>
+    <testcase classname="FilterErrorsComponent › Error Loading" name="should update errors signal when search is successful" time="0.059">
+    </testcase>
+    <testcase classname="FilterErrorsComponent › Error Loading" name="should update errorStats signal when stats are loaded" time="0.056">
+    </testcase>
+    <testcase classname="FilterErrorsComponent › Dropdown Data Loading" name="should load and set browsers data" time="0.054">
+    </testcase>
+    <testcase classname="FilterErrorsComponent › Dropdown Data Loading" name="should load and set users data" time="0.055">
+    </testcase>
+    <testcase classname="FilterErrorsComponent › Dropdown Data Loading" name="should load and set URLs data" time="0.057">
+    </testcase>
+  </testsuite>
+</testsuites>

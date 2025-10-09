@@ -1,0 +1,135 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1>Filter Errors</h1>
+    <p>Search and filter application errors</p>
+  </div>
+  <mat-card class="content-card">
+    <mat-card-content>
+      <form [formGroup]="filterForm" class="filters-form">
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Search</mat-label>
+            <input matInput formControlName="keyword" placeholder="Search errors...">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>User ID</mat-label>
+            <mat-select formControlName="userId">
+              <mat-option value="">All Users</mat-option>
+              @for (user of users(); track user) {
+                <mat-option [value]="user">{{ user }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Browser</mat-label>
+            <mat-select formControlName="browser">
+              <mat-option value="">All Browsers</mat-option>
+              @for (browser of browsers(); track browser) {
+                <mat-option [value]="browser">{{ browser }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>URL</mat-label>
+            <mat-select formControlName="url">
+              <mat-option value="">All URLs</mat-option>
+              @for (url of urls(); track url) {
+                <mat-option [value]="url">{{ url }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="startPicker" formControlName="startDate" placeholder="Start date">
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>End Date</mat-label>
+            <input matInput [matDatepicker]="endPicker" formControlName="endDate" placeholder="End date">
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" (click)="applyFilters()">
+            <mat-icon>filter_list</mat-icon>
+            Apply Filters
+          </button>
+
+          <button mat-button (click)="clearFilters()">
+            <mat-icon>clear</mat-icon>
+            Clear
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <app-stats [errorStats]="errorStats()"></app-stats>
+
+  <mat-card class="table-card">
+    <mat-card-content>
+      <app-loading-inline message="Loading error events..."></app-loading-inline>
+
+      @if (!loadingService.isLoading()) {
+        <div class="table-container">
+          <table mat-table [dataSource]="errors()" matSort class="error-table">
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+              <td mat-cell *matCellDef="let error">{{ error._id ? error._id.substring(0, 8) + '...' : 'N/A' }}</td>
+            </ng-container>
+            <ng-container matColumnDef="errorMessage">
+              <th mat-header-cell *matHeaderCellDef>Error Message</th>
+              <td mat-cell *matCellDef="let error" class="message-cell">
+                {{ error.errorMessage ? (error.errorMessage | slice:0:100) + (error.errorMessage.length > 100 ? '...' : '') : 'N/A' }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="url">
+              <th mat-header-cell *matHeaderCellDef>URL</th>
+              <td mat-cell *matCellDef="let error">
+                {{ error.url ? (error.url | slice:0:50) + (error.url.length > 50 ? '...' : '') : 'N/A' }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="browser">
+              <th mat-header-cell *matHeaderCellDef>Browser</th>
+              <td mat-cell *matCellDef="let error">{{ error.browser || 'N/A' }}</td>
+            </ng-container>
+            <ng-container matColumnDef="timestamp">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Timestamp</th>
+              <td mat-cell *matCellDef="let error">{{ error.timestamp ? (error.timestamp | date:'short') : 'N/A' }}</td>
+            </ng-container>
+            <ng-container matColumnDef="userId">
+              <th mat-header-cell *matHeaderCellDef>User ID</th>
+              <td mat-cell *matCellDef="let error">{{ error.userId || 'N/A' }}</td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef>Actions</th>
+              <td mat-cell *matCellDef="let error">
+                <button mat-icon-button (click)="viewError(error)" matTooltip="View Details">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator
+            [length]="totalErrors()"
+            [pageSize]="filterForm.get('pageSize')?.value || 25"
+            [pageIndex]="filterForm.get('page')?.value || 0"
+            [pageSizeOptions]="[10, 25, 50, 100]"
+            (page)="onPageChange($event)"
+            showFirstLastButtons>
+          </mat-paginator>
+        </div>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

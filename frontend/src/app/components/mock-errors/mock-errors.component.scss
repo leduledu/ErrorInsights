@@ -1,0 +1,35 @@
+.mock-form {
+  .form-field {
+    flex: 1;
+  }
+  
+  .start-button {
+    min-width: 180px;
+  }
+  
+  .stop-button {
+    min-width: 120px;
+  }
+}
+
+.response-section {
+  margin-top: 20px;
+  
+  .response-card {
+    background-color: #f5f5f5;
+    
+    .response-content {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 16px;
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      line-height: 1.4;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  }
+}

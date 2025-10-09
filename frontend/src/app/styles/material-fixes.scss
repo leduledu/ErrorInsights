@@ -1,0 +1,76 @@
+
+@mixin material-component-fixes {
+  ::ng-deep .mat-mdc-select-panel {
+    background-color: white !important;
+    opacity: 1 !important;
+  }
+
+  ::ng-deep .mat-mdc-option {
+    background-color: white !important;
+  }
+
+  ::ng-deep .mat-mdc-option:hover {
+    background-color: rgba(0, 0, 0, 0.04) !important;
+  }
+
+  ::ng-deep .mat-mdc-option.mdc-list-item--selected {
+    background-color: rgba(25, 118, 210, 0.12) !important;
+  }
+
+  ::ng-deep .mat-datepicker-popup {
+    background-color: white !important;
+    opacity: 1 !important;
+  }
+
+  ::ng-deep .mat-calendar {
+    background-color: white !important;
+  }
+
+  ::ng-deep .mat-calendar-header {
+    background-color: white !important;
+  }
+
+  ::ng-deep .mat-calendar-body {
+    background-color: white !important;
+  }
+
+  ::ng-deep .mat-calendar-table {
+    background-color: white !important;
+  }
+
+  ::ng-deep .mat-calendar-cell {
+    background-color: white !important;
+  }
+
+  ::ng-deep .mat-calendar-cell:hover {
+    background-color: rgba(0, 0, 0, 0.04) !important;
+  }
+
+  ::ng-deep .mat-calendar-cell.mat-calendar-cell-selected {
+    background-color: rgba(25, 118, 210, 0.12) !important;
+  }
+
+  ::ng-deep .mat-calendar-cell.mat-calendar-cell-today {
+    background-color: rgba(25, 118, 210, 0.04) !important;
+  }
+
+  ::ng-deep .mat-mdc-dialog-container {
+    background-color: white !important;
+  }
+
+  ::ng-deep .mat-mdc-menu-panel {
+    background-color: white !important;
+  }
+
+  ::ng-deep .mat-mdc-menu-item {
+    background-color: white !important;
+  }
+
+  ::ng-deep .mat-mdc-menu-item:hover {
+    background-color: rgba(0, 0, 0, 0.04) !important;
+  }
+
+  ::ng-deep .cdk-overlay-pane {
+    background-color: white !important;
+  }
+}

@@ -1,0 +1,29 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">    
+    <mat-toolbar class="sidenav-toolbar">
+      <div class="sidenav-header">
+        <mat-icon class="app-icon">bug_report</mat-icon>
+        <span class="app-title">Error Insights</span>
+      </div>
+    </mat-toolbar>    
+    <mat-nav-list class="nav-list">
+      @for (item of navigationItems(); track item.route) {
+        <a mat-list-item 
+           [routerLink]="item.route" 
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          <span matListItemTitle>{{ item.label }}</span>
+        </a>
+      }
+    </mat-nav-list>    
+  </mat-sidenav>  
+  <mat-sidenav-content>
+    <div class="main-content">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

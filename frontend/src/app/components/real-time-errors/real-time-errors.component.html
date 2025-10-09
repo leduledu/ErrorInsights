@@ -1,0 +1,65 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1>Real-time Errors</h1>
+    <p>Monitor application errors in real-time</p>
+  </div>
+  
+  <mat-card class="content-card">
+    <mat-card-header>
+      <mat-card-subtitle>
+        @if (newErrorCount() > 0 && !isAtTop()) {
+          <span class="new-errors-badge">{{ newErrorCount() }} new errors</span>
+        }
+      </mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <div class="errors-section">
+        <div class="errors-header">
+          @if (newErrorCount() > 0 && !isAtTop()) {
+            <button mat-button color="primary" (click)="scrollToTop()">
+              <mat-icon>keyboard_arrow_up</mat-icon>
+              Go to top
+            </button>
+          }
+        </div>
+        
+        @if (loadingInitial()) {
+          <div class="loading-inline">
+            <mat-spinner diameter="30"></mat-spinner>
+            <span>Loading errors...</span>
+          </div>
+        }
+        
+        @if (!loadingInitial()) {
+          <cdk-virtual-scroll-viewport 
+            class="error-viewport"
+            itemSize="100"
+            minBufferPx="200"
+            maxBufferPx="400"
+            (scrolledIndexChange)="onScroll()">
+            
+            <mat-list>
+              <mat-list-item 
+                *cdkVirtualFor="let error of errors(); trackBy: trackByErrorId"
+                class="error-list-item">
+                <div class="error-content">
+                  <div class="error-header">
+                    <span class="error-message">{{ error.errorMessage }}</span>
+                    <span class="error-timestamp">{{ error.timestamp | date:'short' }}</span>
+                    <mat-chip color="accent" selected>{{ error.browser }}</mat-chip>
+                  </div>
+                  <div class="error-details">
+                    <span class="error-user">{{ error.userId }}</span>
+                    <span class="error-url">{{ error.url }}</span>
+                    <span class="error-message">{{ error.stackTrace }}</span>
+                  </div>
+                </div>
+              </mat-list-item>
+            </mat-list>
+          </cdk-virtual-scroll-viewport>
+        }
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

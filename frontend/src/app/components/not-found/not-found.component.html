@@ -1,0 +1,38 @@
+<div class="not-found-container">
+  <div class="not-found-content">
+    <div class="error-code">404</div>    
+    <mat-card class="not-found-card">
+      <mat-card-content>
+        <div class="not-found-icon">
+          <mat-icon>error_outline</mat-icon>
+        </div>        
+        <h1>Page Not Found</h1>
+        <p>The page you're looking for doesn't exist or has been moved.</p>        
+        <div class="not-found-actions">
+          <button mat-button (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon>
+            Go Back
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>    
+    <div class="help-section">
+      <h3>Need Help?</h3>
+      <p>Here are some useful links:</p>
+      <div class="help-links">
+        <a routerLink="/real-time-errors" class="help-link">
+          <mat-icon>wifi</mat-icon>
+          Real-Time Errors
+        </a>
+        <a routerLink="/mfilter-errors" class="help-link">
+          <mat-icon>bug_report</mat-icon>
+          Filter Errors
+        </a>
+        <a routerLink="/analytics" class="help-link">
+          <mat-icon>analytics</mat-icon>
+          Widgets
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
